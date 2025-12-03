@@ -1,0 +1,38 @@
+<form [formGroup]="departmentForm" (ngSubmit)="onSubmit()" class="department-form">
+  <div class="form-group">
+    <label for="departmentName" class="form-label">Department Name</label>
+    <div class="input-wrapper">
+      <input
+        id="departmentName"
+        type="text"
+        formControlName="name"
+        placeholder="Enter department name"
+        class="form-input"
+        [class.input-error]="isNameInvalid"
+      />
+      @if (nameControl?.pending) {
+        <span class="loading-indicator">Checking...</span>
+      }
+    </div>
+    @if (isNameInvalid && nameError) {
+      <span class="error-message">{{ nameError }}</span>
+    }
+  </div>
+
+  <div class="form-buttons">
+    <button
+      type="submit"
+      [disabled]="departmentForm.invalid"
+      class="confirm-btn"
+    >
+      Create
+    </button>
+    <button
+      type="button"
+      (click)="onCancel()"
+      class="cancel-btn"
+    >
+      Cancel
+    </button>
+  </div>
+</form>

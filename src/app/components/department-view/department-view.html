@@ -1,0 +1,123 @@
+<div class="department-view-container">
+  <div class="header">
+    <button (click)="goBack()" class="back-btn">← Back to Dashboard</button>
+    <h1>{{ department()?.name }}</h1>
+  </div>
+
+  <div class="search-section">
+    <input
+      type="text"
+      [(ngModel)]="searchQuery"
+      (input)="onSearchChange()"
+      placeholder="Search employees by name..."
+      class="search-input"
+    />
+    @if (searchQuery()) {
+      <button (click)="clearSearch()" class="clear-btn">
+        Clear
+      </button>
+    }
+  </div>
+
+  <div class="employees-section">
+    @if (department()?.id) {
+      <div class="section-header">
+        <h2>Employees ({{ filteredEmployees().length }})</h2>
+        <button (click)="openNewEmployeeModal()" class="add-btn">
+          + Add Employee
+        </button>
+      </div>
+    }
+
+    @if (filteredEmployees().length > 0) {
+      <div class="employees-list">
+        @for (emp of filteredEmployees(); track emp.id) {
+          <div
+            class="employee-item"
+            (click)="selectEmployee(emp)"
+          >
+            <div class="employee-info">
+              <h3>{{ emp.fullName }}</h3>
+              <p class="contact">📧 {{ emp.email }}</p>
+              <p class="contact">📱 {{ emp.phoneNumber }}</p>
+              <p class="contact">📍 {{ emp.address }}</p>
+            </div>
+            <button
+              (click)="deleteEmployee(emp.id); $event.stopPropagation()"
+              class="delete-btn"
+            >
+              Delete
+            </button>
+          </div>
+        }
+      </div>
+    } @else {
+      <div class="no-employees">
+        <p>No employees found in this department.</p>
+      </div>
+    }
+  </div>
+
+  @if (showNewEmployeeModal()) {
+    <div class="modal-overlay">
+      <div class="modal">
+        <h2>Add New Employee</h2>
+        <form [formGroup]="employeeForm">
+          <div class="form-group">
+            <input
+              type="text"
+              formControlName="fullName"
+              placeholder="Full Name"
+              class="modal-input"
+            />
+            @if (employeeForm.get('fullName')?.hasError('required') && employeeForm.get('fullName')?.touched) {
+              <span class="error-message">Full Name is required</span>
+            }
+          </div>
+          <div class="form-group">
+            <input
+              type="email"
+              formControlName="email"
+              placeholder="Email"
+              class="modal-input"
+            />
+            @if (employeeForm.get('email')?.hasError('required') && employeeForm.get('email')?.touched) {
+              <span class="error-message">Email is required</span>
+            }
+            @if (employeeForm.get('email')?.hasError('email') && employeeForm.get('email')?.touched) {
+              <span class="error-message">Please enter a valid email</span>
+            }
+          </div>
+          <div class="form-group">
+            <input
+              type="tel"
+              formControlName="phoneNumber"
+              placeholder="Phone Number"
+              class="modal-input"
+            />
+            @if (employeeForm.get('phoneNumber')?.hasError('required') && employeeForm.get('phoneNumber')?.touched) {
+              <span class="error-message">Phone Number is required</span>
+            }
+          </div>
+          <div class="form-group">
+            <input
+              type="text"
+              formControlName="address"
+              placeholder="Address"
+              class="modal-input"
+            />
+            @if (employeeForm.get('address')?.hasError('required') && employeeForm.get('address')?.touched) {
+              <span class="error-message">Address is required</span>
+            }
+          </div>
+          <div class="modal-buttons">
+            <button type="button" (click)="createEmployee()" [disabled]="employeeForm.invalid" class="confirm-btn">Create</button>
+            <button type="button" (click)="closeNewEmployeeModal()" class="cancel-btn">
+              Cancel
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+  }
+</div>

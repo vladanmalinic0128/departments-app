@@ -1,0 +1,166 @@
+@import '../../../styles/variables';
+@import '../../../styles/mixins';
+
+.dashboard-container {
+  max-width: $max-width;
+  margin: 0 auto;
+  padding: $space-xl;
+
+  h1 {
+    @include text-dark;
+    margin-bottom: $space-2xl;
+  }
+
+  .search-section {
+    margin-bottom: $space-3xl;
+    display: flex;
+    gap: $space-md;
+
+    .search-input {
+      flex: 1;
+      @include input-base;
+    }
+
+    .clear-btn {
+      @include btn-secondary;
+    }
+  }
+
+  .search-results {
+    background-color: $light-gray;
+    border: 1px solid $border-gray;
+    border-radius: $radius-sm;
+    padding: $space-xl;
+    margin-bottom: $space-3xl;
+
+    h3 {
+      margin-top: 0;
+      @include text-dark;
+    }
+
+    .results-table {
+      width: 100%;
+      border-collapse: collapse;
+
+      thead {
+        background-color: #f0f0f0;
+      }
+
+      th,
+      td {
+        padding: $space-lg;
+        text-align: left;
+        border-bottom: 1px solid $border-gray;
+      }
+
+      th {
+        @include text-semibold;
+        @include text-dark;
+      }
+
+      .clickable-row {
+        cursor: pointer;
+
+        &:hover {
+          background-color: $primary-light;
+        }
+      }
+    }
+
+    p {
+      @include text-muted;
+      margin: 0;
+    }
+  }
+
+  .departments-section {
+    .section-header {
+      @include flex-between;
+      margin-bottom: $space-xl;
+
+      h2 {
+        @include text-dark;
+        margin: 0;
+      }
+
+      .add-btn {
+        @include btn-primary;
+      }
+    }
+
+    .departments-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax($grid-min-column, 1fr));
+      gap: $grid-gap;
+
+      .department-card {
+        @include card-interactive;
+
+        &.clickable {
+          cursor: pointer;
+        }
+
+        h3 {
+          margin: 0 0 $space-md 0;
+          @include text-dark;
+        }
+
+        .employee-count {
+          margin: $space-md 0;
+          @include text-muted;
+          @include text-sm;
+        }
+
+        .delete-btn {
+          margin-top: $space-lg;
+          width: 100%;
+          @include btn-danger;
+        }
+      }
+    }
+  }
+
+  .modal-overlay {
+    @include modal-overlay;
+
+    .modal {
+      @include modal-box;
+      max-width: $max-width-modal-sm;
+
+      h2 {
+        margin-top: 0;
+        @include text-dark;
+      }
+
+      .modal-input {
+        width: 100%;
+        @include input-base;
+        margin: $space-lg 0;
+        box-sizing: border-box;
+      }
+
+      .modal-buttons {
+        display: flex;
+        gap: $space-md;
+        margin-top: $space-xl;
+
+        button {
+          flex: 1;
+          @include btn-base;
+
+          &.confirm-btn {
+            @include btn-primary;
+          }
+
+          &.cancel-btn {
+            @include btn-secondary;
+          }
+        }
+      }
+    }
+  }
+}
+
+.clickable {
+  cursor: pointer;
+}

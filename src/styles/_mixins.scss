@@ -1,0 +1,205 @@
+@import './variables';
+
+// Button Mixins
+@mixin btn-base {
+  padding: $space-md $space-lg;
+  border: none;
+  border-radius: $radius-sm;
+  cursor: pointer;
+  font-size: $font-size-base;
+  font-weight: $font-weight-semibold;
+  transition: $transition-base;
+
+  &:disabled {
+    cursor: not-allowed;
+    opacity: 0.6;
+  }
+}
+
+@mixin btn-primary {
+  @include btn-base;
+  background-color: $success;
+  color: white;
+
+  &:hover:not(:disabled) {
+    background-color: $success-dark;
+  }
+}
+
+@mixin btn-secondary {
+  @include btn-base;
+  background-color: $secondary;
+  color: white;
+
+  &:hover:not(:disabled) {
+    background-color: $secondary-dark;
+  }
+}
+
+@mixin btn-danger {
+  @include btn-base;
+  background-color: $danger;
+  color: white;
+
+  &:hover:not(:disabled) {
+    background-color: $danger-dark;
+  }
+}
+
+@mixin btn-cancel {
+  @include btn-base;
+  background-color: $form-cancel-bg;
+  color: $form-cancel-text;
+
+  &:hover:not(:disabled) {
+    background-color: $form-cancel-hover;
+  }
+}
+
+@mixin btn-primary-blue {
+  @include btn-base;
+  background-color: $primary;
+  color: white;
+
+  &:hover:not(:disabled) {
+    background-color: $primary-dark;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba($primary, 0.3);
+  }
+
+  &:disabled {
+    background-color: $input-disabled-bg;
+    color: $input-disabled-text;
+  }
+}
+
+// Input Mixins
+@mixin input-base {
+  padding: $space-md $space-lg;
+  border: 1px solid $border-gray;
+  border-radius: $radius-sm;
+  font-size: $font-size-base;
+  transition: $transition-base;
+
+  &:focus {
+    outline: none;
+    border-color: $primary;
+    box-shadow: 0 0 5px $primary-focus-shadow;
+  }
+}
+
+@mixin input-error {
+  border-color: $input-error;
+  background-color: $input-error-bg;
+
+  &:focus {
+    box-shadow: 0 0 5px $input-error-shadow;
+    border-color: $input-error;
+  }
+}
+
+// Card Mixins
+@mixin card {
+  background-color: white;
+  border: 1px solid $border-gray;
+  border-radius: $radius-md;
+  padding: $space-xl;
+  box-shadow: $shadow-sm;
+}
+
+@mixin card-interactive {
+  @include card;
+  transition: $transition-base;
+
+  &:hover {
+    box-shadow: $shadow-md;
+    transform: translateY(-2px);
+  }
+}
+
+// Modal Mixins
+@mixin modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: $overlay-bg;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: $z-modal;
+}
+
+@mixin modal-box {
+  background-color: white;
+  border-radius: $radius-md;
+  padding: $space-2xl;
+  max-width: $max-width-modal;
+  width: 90%;
+  box-shadow: $shadow-lg;
+}
+
+// Text Mixins
+@mixin text-dark {
+  color: $text-dark;
+}
+
+@mixin text-muted {
+  color: $text-muted;
+}
+
+@mixin text-sm {
+  font-size: $font-size-sm;
+}
+
+@mixin text-semibold {
+  font-weight: $font-weight-semibold;
+}
+
+// Utility Mixins
+@mixin clearfix {
+  &::after {
+    content: '';
+    display: table;
+    clear: both;
+  }
+}
+
+@mixin flex-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+@mixin flex-between {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+@mixin flex-column {
+  display: flex;
+  flex-direction: column;
+}
+
+// Responsive Mixins
+@mixin respond-to($breakpoint) {
+  @if $breakpoint == 'xs' {
+    @media (max-width: $breakpoint-xs) {
+      @content;
+    }
+  } @else if $breakpoint == 'sm' {
+    @media (max-width: $breakpoint-sm) {
+      @content;
+    }
+  } @else if $breakpoint == 'md' {
+    @media (max-width: $breakpoint-md) {
+      @content;
+    }
+  } @else if $breakpoint == 'lg' {
+    @media (max-width: $breakpoint-lg) {
+      @content;
+    }
+  }
+}

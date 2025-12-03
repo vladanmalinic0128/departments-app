@@ -1,0 +1,82 @@
+// Colors - Primary
+$primary: #007bff;
+$primary-dark: #0056b3;
+$primary-light: #e8f4ff;
+$primary-focus-shadow: rgba(0, 123, 255, 0.5);
+
+// Colors - Secondary
+$success: #28a745;
+$success-dark: #218838;
+
+// Colors - Danger
+$danger: #dc3545;
+$danger-dark: #c82333;
+
+// Colors - Neutral
+$secondary: #6c757d;
+$secondary-dark: #5a6268;
+$light-gray: #f9f9f9;
+$border-gray: #ddd;
+$text-dark: #333;
+$text-muted: #666;
+
+// Colors - Form
+$input-error: #dc3545;
+$input-error-bg: rgba(220, 53, 69, 0.05);
+$input-error-shadow: rgba(220, 53, 69, 0.1);
+$input-disabled-bg: #c3e6ff;
+$input-disabled-text: #80b3ff;
+$form-cancel-bg: #e9ecef;
+$form-cancel-text: #495057;
+$form-cancel-hover: #dee2e6;
+
+// Spacing Scale
+$space-xs: 3px;
+$space-sm: 5px;
+$space-md: 10px;
+$space-lg: 15px;
+$space-xl: 20px;
+$space-2xl: 30px;
+$space-3xl: 40px;
+
+// Border Radius
+$radius-sm: 4px;
+$radius-md: 8px;
+
+// Shadows
+$shadow-sm: 0 2px 4px rgba(0, 0, 0, 0.1);
+$shadow-md: 0 4px 8px rgba(0, 0, 0, 0.15);
+$shadow-lg: 0 4px 20px rgba(0, 0, 0, 0.15);
+
+// Transitions
+$transition-base: all 0.3s ease;
+$transition-fast: all 0.2s ease;
+
+// Typography
+$font-size-sm: 0.875rem;
+$font-size-base: 1rem;
+$font-size-md: 0.95rem;
+$font-weight-normal: 400;
+$font-weight-semibold: 600;
+
+// Layout
+$max-width: 1200px;
+$max-width-lg: 1000px;
+$max-width-modal: 500px;
+$max-width-modal-sm: 400px;
+
+// Z-index
+$z-modal: 1000;
+
+// Grid
+$grid-min-column: 250px;
+$grid-gap: 20px;
+
+// Overlay
+$overlay-bg: rgba(0, 0, 0, 0.5);
+
+// Responsive
+$breakpoint-xs: 480px;
+$breakpoint-sm: 768px;
+$breakpoint-md: 1024px;
+$breakpoint-lg: 1200px;

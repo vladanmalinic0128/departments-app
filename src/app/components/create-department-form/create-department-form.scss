@@ -1,0 +1,92 @@
+@import '../../../styles/variables';
+@import '../../../styles/mixins';
+
+.department-form {
+  @include flex-column;
+  gap: $space-md;
+
+  .form-group {
+    @include flex-column;
+    gap: $space-sm;
+
+    .form-label {
+      @include text-semibold;
+      @include text-dark;
+      font-size: $font-size-md;
+    }
+
+    .input-wrapper {
+      position: relative;
+      display: flex;
+      align-items: center;
+    }
+
+    .form-input {
+      flex: 1;
+      padding: $space-lg;
+      border: 2px solid #e0e0e0;
+      border-radius: $radius-sm;
+      font-size: $font-size-base;
+      font-family: inherit;
+      transition: $transition-base;
+
+      &:focus {
+        outline: none;
+        border-color: $primary;
+        box-shadow: 0 0 0 3px rgba($primary, 0.1);
+      }
+
+      &.input-error {
+        @include input-error;
+      }
+    }
+
+    .loading-indicator {
+      position: absolute;
+      right: $space-lg;
+      font-size: $font-size-sm;
+      color: $primary;
+      @include text-semibold;
+      animation: pulse 1.5s ease-in-out infinite;
+    }
+
+    .error-message {
+      color: $input-error;
+      @include text-sm;
+      @include text-semibold;
+    }
+  }
+
+  @keyframes pulse {
+    0%, 100% {
+      opacity: 1;
+    }
+    50% {
+      opacity: 0.5;
+    }
+  }
+
+  .form-buttons {
+    display: flex;
+    gap: $space-lg;
+    justify-content: flex-end;
+
+    button {
+      padding: $space-lg $space-xl;
+      border: none;
+      border-radius: $radius-sm;
+      font-size: $font-size-base;
+      @include text-semibold;
+      cursor: pointer;
+      transition: $transition-base;
+
+      &.confirm-btn {
+        @include btn-primary-blue;
+      }
+
+      &.cancel-btn {
+        @include btn-cancel;
+      }
+    }
+  }
+}

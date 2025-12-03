@@ -1,0 +1,158 @@
+@import '../../../styles/variables';
+@import '../../../styles/mixins';
+
+.department-view-container {
+  max-width: $max-width-lg;
+  margin: 0 auto;
+  padding: $space-xl;
+
+  .header {
+    display: flex;
+    align-items: center;
+    gap: $space-xl;
+    margin-bottom: $space-2xl;
+
+    .back-btn {
+      @include btn-secondary;
+    }
+
+    h1 {
+      @include text-dark;
+      margin: 0;
+    }
+  }
+
+  .search-section {
+    margin-bottom: $space-2xl;
+    display: flex;
+    gap: $space-md;
+
+    .search-input {
+      flex: 1;
+      @include input-base;
+    }
+
+    .clear-btn {
+      @include btn-secondary;
+    }
+  }
+
+  .employees-section {
+    .section-header {
+      @include flex-between;
+      margin-bottom: $space-xl;
+
+      h2 {
+        @include text-dark;
+        margin: 0;
+      }
+
+      .add-btn {
+        @include btn-primary;
+      }
+    }
+
+    .employees-list {
+      @include flex-column;
+      gap: $space-lg;
+
+      .employee-item {
+        background-color: white;
+        border: 1px solid $border-gray;
+        border-radius: $radius-md;
+        padding: $space-lg;
+        display: flex;
+        justify-content: space-between;
+        align-items: start;
+        cursor: pointer;
+        transition: $transition-base;
+
+        &:hover {
+          box-shadow: $shadow-md;
+          transform: translateX(5px);
+        }
+
+        .employee-info {
+          flex: 1;
+
+          h3 {
+            margin: 0 0 $space-md 0;
+            @include text-dark;
+          }
+
+          .contact {
+            margin: $space-sm 0;
+            @include text-muted;
+            @include text-sm;
+          }
+        }
+
+        .delete-btn {
+          @include btn-danger;
+          margin-left: $space-lg;
+          white-space: nowrap;
+        }
+      }
+    }
+
+    .no-employees {
+      background-color: $light-gray;
+      border: 1px solid $border-gray;
+      border-radius: $radius-sm;
+      padding: $space-xl;
+      text-align: center;
+      @include text-muted;
+    }
+  }
+
+  .modal-overlay {
+    @include modal-overlay;
+
+    .modal {
+      @include modal-box;
+
+      h2 {
+        margin-top: 0;
+        @include text-dark;
+      }
+
+      .form-group {
+        margin-bottom: $space-lg;
+
+        .modal-input {
+          width: 100%;
+          @include input-base;
+          margin: 0 0 $space-sm 0;
+          box-sizing: border-box;
+        }
+
+        .error-message {
+          display: block;
+          @include text-dark;
+          @include text-sm;
+          margin-top: $space-xs;
+          color: $input-error;
+        }
+      }
+
+      .modal-buttons {
+        display: flex;
+        gap: $space-md;
+        margin-top: $space-xl;
+
+        button {
+          flex: 1;
+          @include btn-base;
+
+          &.confirm-btn {
+            @include btn-primary;
+          }
+
+          &.cancel-btn {
+            @include btn-secondary;
+          }
+        }
+      }
+    }
+  }
+}
